@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Параметры GET-запроса</title>{% endblock %}
+
+{% block main %}
+  {# Идентификатор текущей страницы — используется JS для подсветки навигации #}
+  <div id="pk">{{ last_url_element }}</div>
+
+  <h5 class="card-title text-center">Параметры GET-запроса</h5>
+
+  <div class="card">
+    <div class="card-body">
+      {# Перебираем словарь items_dict: ключи и значения из request.GET #}
+      <ul class="d-flex flex-column flex-wrap">
+        {% for key, value in items_dict.items %}
+          <li class="m-2 list-group-item">
+            <strong>{{ key }}</strong>: {{ value }}
+          </li>
+        {% empty %}
+          <li class="m-2 list-group-item text-muted">
+            Параметры GET-запроса отсутствуют.
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}

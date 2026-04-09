@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Магазин</title>{% endblock %}
+
+{% block main %}
+  {% load static %}
+
+  {# Идентификатор текущей страницы — используется JS для подсветки навигации #}
+  <div id="pk">{{ last_url_element }}</div>
+
+  <h5 class="card-title text-center">Магазин</h5>
+
+  <div class="card">
+    <div class="card-body">
+      {# Форма отправляется через GET на страницу результата заказа #}
+      {# target="_blank" открывает результат в новой вкладке #}
+      <form action="{% url 'websiteApp:store_result' %}" id="UserEnter" name="UserEnter" target="_blank">
+        <ul class="d-flex flex-row flex-wrap list-unstyled">
+          {% for object in dict_of_array.goods_array %}
+            <li class="m-2 list-group-item bg-light border p-3">
+              <img src="{{ object.img }}" width="200" alt="{{ object.title }}" />
+              <h6>{{ object.title }}</h6>
+              <p>
+                {{ object.description }}. Цена: {{ object.price }} р.
+              </p>
+              <p>
+                {# Скрытое поле: артикул товара передаётся при отправке формы #}
+                <input name="vendor_code" type="hidden" value="{{ object.vendor_code }}" />
+                Заказать:
+                {# Поле количества — пользователь вводит нужное число #}
+                <input
+                  style="width: 4rem;"
+                  name="amount"
+                  type="number"
+                  value="0"
+                  min="0"
+                  class="form-control d-inline-block"
+                />
+                шт.
+              </p>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <ul class="d-flex flex-row flex-wrap list-unstyled">
+          {% for object in dict_of_array.box_array  %}
+            <li class="m-2 list-group-item bg-light border p-3">
+              <img src="{{ object.img }}" width="200" alt="{{ object.title }}" />
+              <h6>{{ object.title }}</h6>
+              <p>
+                {{ object.description }}. Цена: {{ object.price }} р.
+              </p>
+              <p>
+                {# Скрытое поле: артикул товара передаётся при отправке формы #}
+                <input name="vendor_code" type="hidden" value="{{ object.vendor_code }}" />
+                Заказать:
+                {# Поле количества — пользователь вводит нужное число #}
+                <input
+                  style="width: 4rem;"
+                  name="amount"
+                  type="number"
+                  value="0"
+                  min="0"
+                  class="form-control d-inline-block"
+                />
+                шт.
+              </p>
+            </li>
+          {% endfor %}
+        </ul>
+
+
+        <button class="btn btn-primary" type="submit">Отправить заказ</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

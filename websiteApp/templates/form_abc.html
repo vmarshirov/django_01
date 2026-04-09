@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Form ABC — проверка диапазона</title>{% endblock %}
+
+{% block main %}
+  {# Идентификатор текущей страницы — используется JS для подсветки навигации #}
+  <div id="pk">{{ last_url_element }}</div>
+
+  <h5 class="card-title text-center">Form ABC — проверка диапазона (JS)</h5>
+  <p class="text-muted">
+    Принадлежит ли целое число C диапазону [A, B]?
+    Проверка выполняется на стороне клиента (JavaScript).
+    При успешной проверке данные отправляются на сервер через GET.
+  </p>
+
+  {# Форма отправляется на страницу form_get_all, которая выводит все параметры #}
+  <form action="{% url 'websiteApp:form_get_all' %}" id="UserEnter" name="UserEnter" target="_blank">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <label for="content">Задача:</label>
+        <textarea id="content" name="content" class="form-control mt-1">Принадлежит ли целое C диапазону A-B? Если принадлежит — отправить все на сервер.</textarea>
+      </li>
+      <li class="list-group-item">
+        <label for="a">A:</label>
+        <input id="a" name="a" type="number" value="10" class="form-control" />
+      </li>
+      <li class="list-group-item">
+        <label for="b">B:</label>
+        <input id="b" name="b" type="number" value="20" class="form-control" />
+      </li>
+      <li class="list-group-item">
+        <label for="c">C:</label>
+        <input id="c" name="c" type="number" value="19" class="form-control" />
+      </li>
+      <li class="list-group-item">
+        <label for="result">Результат:</label>
+        {# Поле результата заполняется JS-скриптом #}
+        <textarea id="result" name="result" class="form-control" readonly></textarea>
+      </li>
+      <li class="list-group-item">
+        {# Кнопка проверки — вызывает JS-функцию без отправки формы #}
+        <p id="verify" type="button" class="btn btn-secondary">Проверить</p>
+      </li>
+      <li class="list-group-item">
+        {# Кнопка отправки — JS решает, разрешить ли submit #}
+        <p id="send" type="button" class="btn btn-primary">Отправить</p>
+      </li>
+    </ul>
+  </form>
+
+  {% load static %}
+  {# Подключаем JS-скрипт с логикой проверки диапазона #}
+  <script src="{% static 'websiteApp/js/form_abc.js' %}"></script>
+{% endblock %}

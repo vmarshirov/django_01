@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>GET-форма Django</title>{% endblock %}
+
+{% block main %}
+  {# Идентификатор текущей страницы — используется JS для подсветки навигации #}
+  <div id="pk">{{ last_url_element }}</div>
+
+  <h5 class="card-title text-center">GET-форма Django</h5>
+  <p class="text-muted">
+    Данные передаются через строку запроса (URL).
+    Пример: <code>?a=1&amp;b=2&amp;c=3</code>
+  </p>
+
+  <div class="card">
+    <div class="card-body">
+      {# Форма отправляется методом GET на тот же URL #}
+      {# CSRF-токен для GET-форм не требуется #}
+      <form action="{% url 'websiteApp:abc_form_get' %}">
+        <div class="section">
+          {# Рендерим все поля формы через метод as_div() (Django 4.1+) #}
+          {{ form_get.as_div }}
+          <div class="mt-2">
+            <button type="submit" class="btn btn-primary" id="id_submit">
+              Вычислить
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {# Результат отображается только после отправки формы #}
+  {% if result %}
+    <div class="alert alert-success mt-3">
+      <strong>Результат:</strong> {{ result }}
+    </div>
+  {% endif %}
+{% endblock %}

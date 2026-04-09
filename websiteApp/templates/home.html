@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Домашняя страница</title>{% endblock %}
+
+{% block main %}
+  {# Идентификатор текущей страницы — используется JS для подсветки навигации #}
+  <div id="pk">{{ last_url_element }}</div>
+
+  <h5 class="card-title text-center">Домашняя страница (home)</h5>
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text">Содержание домашней страницы websiteApp.</p>
+      <p class="card-text">
+        Приложение демонстрирует работу с HTML-формами в Django:
+      </p>
+      <ul>
+        <li><a href="{% url 'websiteApp:form_abc' %}">form_abc</a> — JS-форма на стороне клиента</li>
+        <li><a href="{% url 'websiteApp:abc_form_get' %}">abc_form_get</a> — Django-форма через GET</li>
+        <li><a href="{% url 'websiteApp:abc_form_post' %}">abc_form_post</a> — Django-форма через POST</li>
+        <li><a href="{% url 'websiteApp:store' %}">store</a> — магазин с формой заказа</li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

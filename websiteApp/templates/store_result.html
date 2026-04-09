@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>Магазин — результат заказа</title>{% endblock %}
+
+{% block main %}
+  {% load static %}
+
+  <h5 class="card-title text-center">Магазин — итоги заказа</h5>
+
+  <div class="card">
+    <div class="card-body">
+      {% if d %}
+        {# Выводим таблицу заказа: артикул → количество #}
+        <table class="table">
+          <thead>
+              <td>Артикул</td>
+              <td>Количество, шт.</td>
+          </thead>
+          <tbody>
+            {% for vendor_code, amount in d.items %}
+              <tr>
+                <td>{{ vendor_code }}</td>
+                <td>{{ amount }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="text-muted">Заказ пуст — не выбрано ни одного товара.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

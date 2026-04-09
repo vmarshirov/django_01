@@ -1,0 +1,48 @@
+{# ============================================================ #}
+{# Навигационное меню приложения websiteApp                      #}
+{# Использует обратное связывание URL через тег {% url %}        #}
+{# Активный пункт определяется по переменной last_url_element    #}
+{# ============================================================ #}
+
+{# Первая строка навигации: статические ссылки с id для JS-скрипта #}
+<ul class="nav nav-tabs card-header-tabs">
+  <li class="nav-item">
+    <a id="home" class="nav-link" href="{% url 'websiteApp:home' %}">home</a>
+  </li>
+  <li class="nav-item">
+    <a id="form_abc" class="nav-link" href="{% url 'websiteApp:form_abc' %}">form_abc</a>
+  </li>
+  <li class="nav-item">
+    <a id="abc_form_get" class="nav-link" href="{% url 'websiteApp:abc_form_get' %}">abc_form_get</a>
+  </li>
+  <li class="nav-item">
+    <a id="abc_form_post" class="nav-link" href="{% url 'websiteApp:abc_form_post' %}">abc_form_post</a>
+  </li>
+  <li class="nav-item">
+    <a id="store" class="nav-link" href="{% url 'websiteApp:store' %}">store</a>
+  </li>
+</ul>
+
+{# Вторая строка навигации: активный пункт выделяется через шаблонный тег if #}
+<ul class="nav nav-tabs card-header-tabs mt-1">
+  <li class="nav-item">
+    <a class="nav-link {% if last_url_element == 'home' %}active{% endif %}"
+       href="{% url 'websiteApp:home' %}">home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% if last_url_element == 'form_abc' %}active{% endif %}"
+       href="{% url 'websiteApp:form_abc' %}">form_abc</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% if last_url_element == 'abc_form_get' %}active{% endif %}"
+       href="{% url 'websiteApp:abc_form_get' %}">abc_form_get</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% if last_url_element == 'abc_form_post' %}active{% endif %}"
+       href="{% url 'websiteApp:abc_form_post' %}">abc_form_post</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% if last_url_element == 'store' %}active{% endif %}"
+       href="{% url 'websiteApp:store' %}">store</a>
+  </li>
+</ul>

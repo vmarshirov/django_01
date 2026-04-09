@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>POST-форма Django</title>{% endblock %}
+
+{% block main %}
+  {# Идентификатор текущей страницы — используется JS для подсветки навигации #}
+  <div id="pk">{{ last_url_element }}</div>
+
+  <h5 class="card-title text-center">POST-форма Django</h5>
+  <p class="text-muted">
+    Данные передаются в теле запроса (скрыты от URL).
+    Обязательно наличие <code>{% verbatim %}{% csrf_token %}{% endverbatim %}</code> внутри формы.
+  </p>
+
+  <div class="card">
+    <div class="card-body">
+      {# Форма отправляется методом POST #}
+      <form action="{% url 'websiteApp:abc_form_post' %}" method="post">
+        {# CSRF-токен защищает от подделки межсайтовых запросов #}
+        {% csrf_token %}
+        <table class="table">
+          {# Рендерим поля формы в виде строк таблицы #}
+          {{ form_post }}
+          <tr>
+            <th></th>
+            <td>
+              <button type="submit" class="btn btn-primary" id="id_submit">
+                Вычислить
+              </button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+
+  {# Результат отображается только после успешной отправки POST-формы #}
+  {% if result %}
+    <div class="alert alert-success mt-3">
+      <strong>Результат:</strong> {{ result }}
+    </div>
+  {% endif %}
+{% endblock %}

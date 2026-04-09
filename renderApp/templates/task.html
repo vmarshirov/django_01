@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}<title>Решение задачи</title>{% endblock %}
+
+{% block main %}
+  <h3>Решение задачи</h3>
+
+  {# Номер и формулировка задачи, переданные из представления #}
+  <div class="card mb-2">
+    <div class="card-body">
+      <h5 class="card-title">Формулировка задачи</h5>
+      <p class="card-text">{{ formulation_value }}</p>
+    </div>
+  </div>
+
+  {# Значение переменной a, полученное из URL #}
+  <div class="card mb-2">
+    <div class="card-body">
+      <h5 class="card-title">Значения переменных</h5>
+      <p class="card-text">a = {{ a_value }}</p>
+    </div>
+  </div>
+
+  {# Результат вычисления из вспомогательной функции task_solution() #}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Ответ</h5>
+      <p class="card-text">{{ result_value }}</p>
+    </div>
+  </div>
+{% endblock %}

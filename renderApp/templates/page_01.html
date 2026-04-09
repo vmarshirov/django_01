@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block title %}<title>Страница 1</title>{% endblock %}
+
+{% block main %}
+  <h3>Страница 1</h3>
+  {# Выводим захваченный path-параметр из URL #}
+  <p id="path_value">path_value: {{ path_value }}</p>
+{% endblock %}

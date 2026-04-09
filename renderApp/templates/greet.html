@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block title %}<title>Приветствие</title>{% endblock %}
+
+{% block main %}
+  <h3>Приветствие из views</h3>
+  {# Выводим значение, переданное из представления через ключ 'key' #}
+  <p>{{ key }}</p>
+{% endblock %}

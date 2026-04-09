@@ -1,0 +1,53 @@
+{% load static %}
+{# Навигационное меню приложения renderApp #}
+{# Использует обратное связывание URL через тег {% url %} #}
+<ul class="nav nav-tabs card-header-tabs">
+
+  {# Начальная страница #}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'renderApp:index' %}">Начальная страница
+    </a>
+  </li>
+
+  {# Главная страница — иконка движка #}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'renderApp:greet' path_value='привет' %}">
+      <img src="{% static 'renderApp/images/engine.jpg' %}" height="20px" alt="home" />
+    </a>
+  </li>
+
+  {# Маршрутизатор: переход на первую страницу #}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'renderApp:pages' path_value='first' %}">first</a>
+  </li>
+
+
+  {# Маршрутизатор: переход на вторую страницу #}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'renderApp:pages' path_value='second' %}">second</a>
+  </li>
+
+
+  {# Первая страница с path-параметром #}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'renderApp:page_01' path_value='id/page/010' %}">page_01</a>
+  </li>
+
+  {# Вторая страница с якорными ссылками #}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'renderApp:page_02' path_value='id/page/020' %}">page_02</a>
+  </li>
+
+
+
+  {# Страница решения задачи (a=2 → проверка знака числа) #}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'renderApp:task' path_value='a=2' %}">Решение задачи</a>
+  </li>
+
+  {# Страница с массивами объектов (список товаров) #}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'renderApp:objects_arrays' %}">Массивы объектов</a>
+  </li>
+
+</ul>

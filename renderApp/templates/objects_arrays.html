@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block title %}<title>Массивы объектов</title>{% endblock %}
+
+{% block main %}
+
+  <h5 class="card-title text-center">Массивы объектов</h5>
+
+  {# --- Список товаров (goods_array) --- #}
+  <div class="card mb-3">
+    <div class="card-body">
+      <ul class="d-flex flex-row flex-wrap list-unstyled">
+        {% for object in dict_of_array.goods_array %}
+          <li class="m-2 list-group-item bg-light border p-3">
+            {# URL изображения уже готов: либо /static/..., либо https://... #}
+            <img src="{{ object.img }}" width="200" alt="{{ object.title }}" />
+            <h6>{{ object.title }}</h6>
+            <p>{{ object.description }}. Цена: {{ object.price }} р.</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  {# --- Дополнительный массив (box_array) --- #}
+  <h5 class="card-title text-center">Другие массивы</h5>
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td>Название</td>
+            <td>Изображение</td>
+            <td>Описание</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for object in dict_of_array.box_array %}
+            <tr>
+              <td>{{ object.title }}</td>
+              <td>
+                <img src="{{ object.img }}" width="200" alt="{{ object.title }}" />
+              </td>
+              <td>{{ object.description }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+{% endblock %}

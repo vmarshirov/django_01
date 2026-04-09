@@ -1,0 +1,79 @@
+*{
+    }
+.bg-color {
+    background-color: red;
+    background-image: url(../images/engine.jpg);
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+div {
+    width: 100%;
+
+}
+
+th {
+    font-weight:normal;
+}
+.list-group li {
+    /*Контейнер*/
+    display: flex;
+    /*главная ось*/
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:flex-start;
+    /*поперечная ось */
+    align-items:center;
+}
+
+
+.section div {
+    /*Контейнер*/
+    display: flex;
+    /*главная ось*/
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:flex-start;
+    /*поперечная ось */
+    align-items:center;
+}
+
+tr {
+    /*Контейнер*/
+    display: flex;
+    /*главная ось*/
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:flex-start;
+    /*поперечная ось */
+    align-items:center;
+}
+
+label {
+    display: inline-table;
+    line-height: 1.0rem;
+}
+
+input,textarea,td {
+    display: ininline-table;
+    resize: horizontal;
+    margin: 0.5rem;
+    height: 3.0rem;
+    width:100%
+    }
+
+td{
+    height: 100%;
+}
+
+table, div {
+    width: 100%;
+}
+
+
+
+
+a:hover {
+    text-decoration: underline;
+}
